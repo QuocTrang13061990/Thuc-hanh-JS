@@ -6,7 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>onmouseover-onmouseout</title>
 </head>
+<!-- Bài tập 1: Đổi màu một khối (Sử dung thuộc tính: style)
+    - Khi hover chuột vào (onmouseover)
+    - Khi di chuyển chuột ra ngoài (onmouseout)
+-->
 <body>
-    <h1>Thực chiến js</h1>
+    <style>
+        #target {
+            width: 200px; height: 100px; background-color: blueviolet;
+        }
+    </style>
+    <div id="target"></div>
+    <script>
+        var target = document.querySelector('#target');
+        target.onmouseover = function () {
+            target.style.background = "red";
+        }
+        target.onmouseout = function () {
+            target.style.background = "blue";
+        }
+    </script>
 </body>
 </html>
