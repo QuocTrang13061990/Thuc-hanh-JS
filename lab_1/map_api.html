@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sử dụng map trong api</title>
+    <style>
+        .user_info {
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Một số lưu ý</h2>
+    <ul>
+        <li>Mảng api (bên trong là object) -> giống như JSON</li>
+        <li>Cách viết hàm map: arr.map(function(item){`${item.id}....`})</li>
+    </ul>
+    <ul id="target"></ul>
+
+    <!--Begin script -->
+    <script>
+        var users = [
+            {id: 1, name: "Trần Quốc Tráng", gender: 1},
+            {id: 1, name: "Trần Quốc Hùng", gender: 2},
+            {id: 1, name: "Trần Quốc Ngọc", gender: 2},
+            {id: 1, name: "Trần Quốc Mỹ", gender: 2},
+            {id: 1, name: "Trần Quốc Hưng", gender: 1},
+        ];
+        var target = document.querySelector("#target");
+        
+        users.map(function (item) {
+            var liElem = document.createElement("li");
+            liElem.setAttribute("class", "user_info");
+            liElem.innerText = `${item.id} - ${item.name} - ${item.gender == 1 ? "male" : "female"}`;
+            target.appendChild(liElem);
+        });
+    </script>
+    <!--End script -->
+
+</body>
+</html>

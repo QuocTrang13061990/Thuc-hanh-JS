@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onkeyup & createElement & appenChild</title>
+    <style>
+        .container1 {
+            text-align: center;
+        }
+        .wrapper1 {
+            display: inline-block;
+        }
+        .title {
+            color: blueviolet;
+        }
+        #wrapper2 {
+            border: 1px solid black;
+            width: 450px; height: 100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <div>
+        <h2>Yêu cầu 1</h2>
+        <ul>
+            <li>Cho trước thẻ input và thẻ h5</li>
+            <li>Khi nhập nội dung vào input (value) thì nội dung thẻ h5 (innerText) cũng thay đổi theo => onkeyup</li>
+        </ul>
+        <div class="container1">
+            <div class="wrapper1">
+                <input type="text" id="txt_input" value="valueinput...">
+                <h5>Noi dung thay doi theo input</h5>
+            </div>
+        </div>
+   </div>
+
+   <div>
+        <h2>Yêu cầu 2</h2>
+        <ul>
+            <li>Cho trước một thẻ div</li>
+            <li>Tạo một thẻ p (createrElement), set attribute cho nó</li>
+            <li>Cho thẻ p vào trong thẻ div => appendChild</li>
+        </ul>
+        <div>
+            <div id="wrapper2"></div>
+        </div>
+   </div>
+    <script>
+        /* Yêu cầu 1 */
+        txtInput = document.querySelector("#txt_input");
+        h5 = document.querySelector("h5");
+        txtInput.onkeyup = function(){
+            h5.innerText = txtInput.value.toUpperCase();
+        }
+        /* Yêu cầu 2 */
+        wrap2 = document.querySelector("#wrapper2");
+        pElement = document.createElement("p");
+        pElement.innerText = "Hello World";
+        pElement.setAttribute("class", "title");
+        wrap2.appendChild(pElement);
+    </script>
+</body>
+</html>
