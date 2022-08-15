@@ -94,8 +94,8 @@ const checkConfirmPassword = () => {
     }
     return valid;
 }
-// Click vào bất kỳ đâu trên form
-form.addEventListener('click', function (e) {
+// Khi bấm submit thì check xem có valid hay không
+form.addEventListener('submit', function (e) {
     // prevent the form from submitting
     e.preventDefault;
     // lưu ý  biến isEmailValid dưới đây khác với isEmailValid() ở trên (dù trùng tên nhưng không thành vấn đề)
@@ -103,9 +103,71 @@ form.addEventListener('click', function (e) {
     let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
     // submit to the server if the form is valid (phần gửi data cho server không được đề cập ở đây => để trống)
     if (isFormValid) {
-
+        
+    }
+})
+/* Add Instant feedback feature
+    - Thông thường khi submit thì mới biết là success hay không
+    - Tuy nhiên, việc làm dưới đây giúp ta có phản hồi ngay lập tức khi nhập đúng 
+*/
+form.addEventListener('input', function (e) {
+    switch (e.target.id) {
+        case 'username': 
+        checkUsername();
+        break;
+    }
+    switch (e.target.id) {
+        case 'email': 
+        checkEmail();
+        break;
+    }
+    switch (e.target.id) {
+        case 'password': 
+        checkPassword();
+        break;
+    }
+    switch (e.target.id) {
+        case 'confirm-password': 
+        checkConfirmPassword();
+        break;
     }
 })
 
-// showSuccess(usernameEl);
-// console.log(isEmailValid("tqtwip@gmail.com"));
+
+// function debounce: sau khoảng thời gian delay thì nó mới có phản hồi (hàm này có thì tốt hơn, trải nghiệm ok hơn)
+// const debounce = (fn, delay = 1000) => {
+//     let timeoutId;
+//     return (...args) => {
+//         // cancel the previous timer
+//         if (timeoutId) {
+//             clearTimeout(timeoutId);
+//         }
+//         // setup a new timer
+//         timeoutId = setTimeout(() => {
+//             fn.apply(null, args)
+//         }, delay);
+//     };
+// };
+
+// form.addEventListener('input', debounce(function (e) {
+//     switch (e.target.id) {
+//         case 'username': 
+//         checkUsername();
+//         break;
+//     }
+//     switch (e.target.id) {
+//         case 'email': 
+//         checkEmail();
+//         break;
+//     }
+//     switch (e.target.id) {
+//         case 'password': 
+//         checkPassword();
+//         break;
+//     }
+//     switch (e.target.id) {
+//         case 'confirm-password': 
+//         checkConfirmPassword();
+//         break;
+//     }
+// }))
