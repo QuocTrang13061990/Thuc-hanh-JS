@@ -3,7 +3,8 @@ const emailEl = document.getElementById('email');
 const passwordEl = document.getElementById('password');
 const confirmPasswordEl = document.getElementById('confirm-password');
 
-const form = document.getElementById('signup');
+const form = document.getElementById('signin');
+const btnSigninEl = document.getElementById('btn-Signin');
 
 // console.log(usernameEl, emailEl, passwordEl, confirmPasswordEl, form);
 const isRequired = value => value === '' ? false : true;
@@ -36,10 +37,10 @@ const checkUsername = () => {
     let valid = false;
     const min = 3, max = 25;
     // lấy value của field input (trim() giống như bên PHP)
-    const username = usernameEl.value.trim();
-    if (!isRequired(username)) {
+    const usernameVl = usernameEl.value.trim();
+    if (!isRequired(usernameVl)) {
         showError(usernameEl, 'Username cannot be blank');
-    } else if (username.length < min || username.length > 25) {
+    } else if (usernameVl.length < min || usernameVl.length > 25) {
         showError(usernameEl, `Username must be between ${min} and ${max} characters.`);
     } else {
         showSuccess(usernameEl);
@@ -51,10 +52,10 @@ const checkUsername = () => {
 const checkEmail = () => {
     let valid = false;
     // lấy value của field input (trim() giống như bên PHP)
-    const email = emailEl.value.trim();
-    if (!isRequired(email)) {
+    const emailVl = emailEl.value.trim();
+    if (!isRequired(emailVl)) {
         showError(emailEl, 'Email cannot be blank');
-    } else if (!isEmailValid(email)) {
+    } else if (!isEmailValid(emailVl)) {
         showError(emailEl, 'Email is not valid.')
     } else {
         showSuccess(emailEl);
@@ -66,10 +67,10 @@ const checkEmail = () => {
 const checkPassword = () => {
     let valid = false;
     // lấy value của field input (trim() giống như bên PHP)
-    const password = passwordEl.value.trim();
-    if (!isRequired(password)) {
+    const passwordVl = passwordEl.value.trim();
+    if (!isRequired(passwordVl)) {
         showError(passwordEl, 'Password cannot be blank');
-    } else if (!isPasswordSecure(password)) {
+    } else if (!isPasswordSecure(passwordVl)) {
         showError(passwordEl, 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)')
     } else {
         showSuccess(passwordEl);
@@ -81,12 +82,12 @@ const checkPassword = () => {
 const checkConfirmPassword = () => {
     let valid = false;
     // lấy value của field input (trim() giống như bên PHP)
-    const confirmPassword = confirmPasswordEl.value.trim();
-    const password = passwordEl.value.trim();
+    const confirmPasswordVl= confirmPasswordEl.value.trim();
+    const passwordVl = passwordEl.value.trim();
 
-    if (!isRequired(confirmPassword)) {
+    if (!isRequired(confirmPasswordVl)) {
         showError(confirmPasswordEl, 'Please enter the password again');
-    } else if (confirmPassword !== password) {
+    } else if (confirmPasswordVl !== passwordVl) {
         showError(confirmPasswordEl, 'Confirm password does not match')
     } else {
         showSuccess(confirmPasswordEl);
@@ -95,15 +96,28 @@ const checkConfirmPassword = () => {
     return valid;
 }
 // Khi bấm submit thì check xem có valid hay không
-form.addEventListener('submit', function (e) {
-    // prevent the form from submitting
-    e.preventDefault;
+btnSigninEl.addEventListener('click', function () {
     // lưu ý  biến isEmailValid dưới đây khác với isEmailValid() ở trên (dù trùng tên nhưng không thành vấn đề)
     let isUsernameValid = checkUsername(), isEmailValid = checkEmail(), isPasswordValid = checkPassword(), isConfirmPasswordValid = checkConfirmPassword();
     let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
-    // submit to the server if the form is valid (phần gửi data cho server không được đề cập ở đây => để trống)
-    if (isFormValid) {
-        
+    if (true) {
+        const userNameVl = usernameEl.value.trim();
+        const emailVl = emailEl.value.trim();
+        const passwordVl = passwordEl.value.trim();
+        const confirmPasswordVl = confirmPasswordEl.value.trim();
+        $.ajax({
+            url : "register.php",
+            type : "POST",
+            data : {
+                username : userNameVl,
+                email : emailVl,
+                password : passwordVl,
+                confirmpassword : confirmPasswordVl
+            },
+            success : function(response){
+                console.log(response);
+            }
+        });
     }
 })
 /* Add Instant feedback feature

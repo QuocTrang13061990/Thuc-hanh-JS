@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://localhost/git/ajax/crud/index.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CRUD USER USE PHP AJAX MYSQL</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./CRUD USER USE PHP AJAX MYSQL_files/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">CRUD USER USE PHP AJAX MYSQL</h1>
+
+        <!-- Button to Open the Modal -->
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                Add user
+            </button>
+        </div>
+
+        <h2 class="text-danger">All user</h2>
+        <div id="">
+
+        </div>
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add user</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                       <div class="form-group">
+                            <label for="">Fist name</label>
+                            <input type="text" name="firstname" id="firstname" class="form-control">
+                       </div>
+                       <div class="form-group">
+                            <label for="">Last name</label>
+                            <input type="text" name="lastname" id="lastname" class="form-control">
+                       </div>
+                       <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" name="email" id="email" class="form-control">
+                       </div>
+                       <div class="form-group">
+                            <label for="">Phone</label>
+                            <input type="text" name="phone" id="phone" class="form-control">
+                       </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="addUser()">Add</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./CRUD USER USE PHP AJAX MYSQL_files/jquery.min.js.download"></script>
+    <script src="./CRUD USER USE PHP AJAX MYSQL_files/bootstrap.bundle.min.js.download"></script>
+    <script src="./CRUD USER USE PHP AJAX MYSQL_files/custom.js.download"></script>
+
+
+</body></html>

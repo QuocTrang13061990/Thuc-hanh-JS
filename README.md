@@ -9,6 +9,8 @@ Học theo: Lab1 Bai1 WEB2061 - Lập trình Javascrift nâng cao - SP21
 
 
 # Note
+    0. Vấn đề chưa hiểu
+        - Trong hàm checkUsername = dù có khai báo kiểu var usernameVl (value của username), nhưng khi click btn thì vẫn không lấy được usernameVl, lúc này phải đi lấy lại value của username.
     1. Các cách viết function trong javascript
         - function isRequired(){}
         - const isRequired = function(){}
@@ -30,3 +32,5 @@ Học theo: Lab1 Bai1 WEB2061 - Lập trình Javascrift nâng cao - SP21
         - Hiển thị border error của thẻ input (form-field nào có class = "error" thì thiết lập border cho thẻ input)
             - .form-field.error input {border-color: var(--error-color);
                                                 }
+    5. AJAX
+        - Khi chuyển data sang server.php thì tại đây, muốn gọi hàm nào đó viết tại đây thì gọi ở phía sau hàm (hàm đặt ở trước)

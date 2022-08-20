@@ -1,0 +1,20 @@
+function addUser() {
+    let firstname = $('#firstname').val();
+    let lasttname = $('#lastname').val();
+    let email = $('#email').val();
+    let phone = $('#phone').val();
+    /* phương thức ajax được sử dụng để thực hiện một yêu cầu ajax (http không đồng bộ) */
+    $.ajax({
+        url : '../server.php',
+        type : 'POST',
+        data : {
+            firstname : firstname,
+            lasttname : lasttname,
+            email : email,
+            phone : phone
+        },
+        success : function (data, status) {
+            readUser();
+        }
+    })
+}
