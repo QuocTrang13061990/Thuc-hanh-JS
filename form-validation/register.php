@@ -1,5 +1,5 @@
 <?php 
-include_once "connect.php";
+include "connect.php";
 
 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirmpassword'])) {
     /* EMAIL: <username>@<domain>.<ext>
@@ -40,13 +40,21 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     if(empty($username)) {
         $errors['username']['required'] = 'Username cannot be blank';
     }elseif (strlen($username) < $min || strlen($username) > $max) {
-        $errors['username']['min'] = 'Username must be between '.$min.' and '.$max.' characters';
+        $errors['username']['between'] = 'Username must be between '.$min.' and '.$max.' characters';
     }
     // validate email
     if (empty($email)) {
         $errors['email']['required'] = 'Email cannot be blank.';
-    }elseif (!isEmailVal($email)) {
-        $errors['email']['valid'] = 'Email is not valid.';
+    }else {
+        if (!isEmailVal($email)) {
+            $errors['email']['valid'] = 'Email is not valid.';
+        }else {
+            $sql = 'SELECT id FROM `users` WHERE email = \''.$email.'\'';
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_fetch_row($result) > 0) {
+                $errors['email']['unique'] = 'Email already exists';
+            }
+        }
     }
     // validate password
     if (empty($password)) {
@@ -56,7 +64,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     }
     // validate confirmpassword
     if (empty($confirmpassword)) {
-        $errors['confirmpassword']['required'] = 'Please enter the password again';
+        $errors['confirmpassword']['required'] = 'Confirm password cannot be blank';
     }elseif ($password !== $confirmpassword) {
         $errors['confirmpassword']['match'] = 'Confirm password does not match';
     }
@@ -64,9 +72,8 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     if (empty($errors)) {
 
     }else {
-
+        echo json_encode($errors);
     }
 
-    
     
 }

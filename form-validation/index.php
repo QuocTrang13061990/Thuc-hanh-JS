@@ -10,11 +10,12 @@
 </head>
 <body>
     <div class="container">
-        <form id="signin" class="form">
-            <h1></h1>
+        <form id="signup" class="form">
+            <h1>Sign Up</h1>
+            <div id="formsu-error"></div>
             <div class="form-field">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" autocomplete="off">
+                <input type="text" name="username" id="username" class="is-invalid" autocomplete="off">
                 <small></small>
             </div>
             <div class="form-field">
@@ -34,7 +35,7 @@
             </div>
             <div class="form-field">
                 <!-- <input type="submit" value="Sign Up"> -->
-                <button type="button" class="btn btn-primary" id="btn-Signin">Sign In</button>
+                <button type="button" class="btn btn-primary" id="btn-Signup">Sign Up</button>
                 <small></small>
             </div>
         </form>
