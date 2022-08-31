@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <form id="signup" class="form">
+        <form id="signup" class="form" action="register.php" method="POST">
             <h1>Sign Up</h1>
             <div id="formsu-error"></div>
             <div class="form-field">

@@ -70,7 +70,19 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     }
 
     if (empty($errors)) {
+        $response = [];
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $createAt = date('Y-m-d H:i:s');
+        $sql = 'INSERT INTO `users`(`username`, `email`, `password`, `create_at`) VALUE (\''.$username.'\', \''.$email.'\', \''.$passwordHash.'\', \''.$createAt.'\')';
+        $insertStatus = mysqli_query($conn, $sql);
+        if ($insertStatus) {
+            $_SESSION['created'] = 'your account has been created successfully';
+            $response = ['status' => 'success'];
+        }else {
+        }
 
+        // response
+        echo json_encode($response);
     }else {
         echo json_encode($errors);
     }

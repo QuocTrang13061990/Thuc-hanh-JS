@@ -34,3 +34,7 @@ Học theo: Lab1 Bai1 WEB2061 - Lập trình Javascrift nâng cao - SP21
                                                 }
     5. AJAX
         - Khi chuyển data sang server.php thì tại đây, muốn gọi hàm nào đó viết tại đây thì gọi ở phía sau hàm (hàm đặt ở trước)
+    6. Chuyển hướng trang (xem ý nghĩa tại đây: https://stackoverflow.com/questions/15655017/window-location-js-vs-header-php-for-redirection)
+        - Trong HTML : <meta>
+        - Trong JS   : window.location
+        - Trong PHP  : header('Location:')

@@ -97,37 +97,39 @@ $(document).ready(function () {
         - Thông thường khi submit thì mới biết là success hay không
         - Tuy nhiên, việc làm dưới đây giúp ta có phản hồi ngay lập tức khi nhập đúng 
     */
-    // form.addEventListener('input', function (e) {
-    //     switch (e.target.id) {
-    //         case 'username': 
-    //         checkUsername();
-    //         break;
-    //     }
-    //     switch (e.target.id) {
-    //         case 'email': 
-    //         checkEmail();
-    //         break;
-    //     }
-    //     switch (e.target.id) {
-    //         case 'password': 
-    //         checkPassword();
-    //         break;
-    //     }
-    //     switch (e.target.id) {
-    //         case 'confirm-password': 
-    //         checkConfirmPassword();
-    //         break;
-    //     }
-    // })
+    form.addEventListener('input', function (e) {
+        // e.preventDefault;
+        switch (e.target.id) {
+            case 'username': 
+            checkUsername();
+            break;
+        }
+        switch (e.target.id) {
+            case 'email': 
+            checkEmail();
+            break;
+        }
+        switch (e.target.id) {
+            case 'password': 
+            checkPassword();
+            break;
+        }
+        switch (e.target.id) {
+            case 'confirm-password': 
+            checkConfirmPassword();
+            break;
+        }
+    })
 
     /* ************** BEGIN: VALIDATE CLIENT (USE JAVASCRIPT) ************* */
 
     /* ********************* BEGIN: VALIDATE SERVER (AJAX) *********************** */
 
     btnSignupEl.addEventListener('click', function () {
-        // let isUsernameValid = checkUsername(), isEmailValid = checkEmail(), isPasswordValid = checkPassword(), isConfirmPasswordValid = checkConfirmPassword();
-        // let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
-        if (true) {
+        
+        let isUsernameValid = checkUsername(), isEmailValid = checkEmail(), isPasswordValid = checkPassword(), isConfirmPasswordValid = checkConfirmPassword();
+        let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
+        if (isFormValid) {
             const userNameVl = usernameEl.value.trim();
             const emailVl = emailEl.value.trim();
             const passwordVl = passwordEl.value.trim();
@@ -196,52 +198,24 @@ $(document).ready(function () {
                         }
                     }
  
-                    /*************** BEGIN: xác thực và hiển thị lỗi cho mỗi field ****************/
+                    /*************** END: xác thực và hiển thị lỗi cho mỗi field ****************/
 
+                    if ("status" in response && response.status === "success") {
+                        window.location = "login.php";
+                    }
 
                 }
             });
         }
     })
 
-    /* ********************* BEGIN: VALIDATE SERVER (AJAX) *********************** */
+    /********************** END: VALIDATE SERVER (AJAX) ************************/
 
-    // function debounce: sau khoảng thời gian delay thì nó mới có phản hồi (hàm này có thì tốt hơn, trải nghiệm ok hơn)
-    // const debounce = (fn, delay = 1000) => {
-    //     let timeoutId;
-    //     return (...args) => {
-    //         // cancel the previous timer
-    //         if (timeoutId) {
-    //             clearTimeout(timeoutId);
-    //         }
-    //         // setup a new timer
-    //         timeoutId = setTimeout(() => {
-    //             fn.apply(null, args)
-    //         }, delay);
-    //     };
-    // };
+    /******************************BEGIN: LOGIN *****************************/
 
-    // form.addEventListener('input', debounce(function (e) {
-    //     switch (e.target.id) {
-    //         case 'username': 
-    //         checkUsername();
-    //         break;
-    //     }
-    //     switch (e.target.id) {
-    //         case 'email': 
-    //         checkEmail();
-    //         break;
-    //     }
-    //     switch (e.target.id) {
-    //         case 'password': 
-    //         checkPassword();
-    //         break;
-    //     }
-    //     switch (e.target.id) {
-    //         case 'confirm-password': 
-    //         checkConfirmPassword();
-    //         break;
-    //     }
-    // }))
+    
+
+    /******************************BEGIN: LOGIN *****************************/
+
 
 })
