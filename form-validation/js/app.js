@@ -4,9 +4,8 @@ $(document).ready(function () {
     const passwordEl = document.getElementById('password');
     const confirmPasswordEl = document.getElementById('confirm-password');
 
-    const form = document.getElementById('signup');
-    const btnSignupEl = document.getElementById('btn-Signup');
-
+    var form = $('.form-login');
+    var btnSignupEl = $('.btn-primary');
     const showError = (input, message) => {
         const formField = input.parentElement;
         formField.classList.remove('success');
@@ -97,36 +96,29 @@ $(document).ready(function () {
         - Thông thường khi submit thì mới biết là success hay không
         - Tuy nhiên, việc làm dưới đây giúp ta có phản hồi ngay lập tức khi nhập đúng 
     */
-    form.addEventListener('input', function (e) {
+    form.on('input', function (e) {
         // e.preventDefault;
         switch (e.target.id) {
             case 'username': 
-            checkUsername();
-            break;
-        }
-        switch (e.target.id) {
+                checkUsername();
+                break;
             case 'email': 
-            checkEmail();
-            break;
-        }
-        switch (e.target.id) {
+                checkEmail();
+                break;
             case 'password': 
-            checkPassword();
-            break;
-        }
-        switch (e.target.id) {
+                checkPassword();
+                break;
             case 'confirm-password': 
-            checkConfirmPassword();
-            break;
+                checkConfirmPassword();
+                break;
         }
     })
 
-    /* ************** BEGIN: VALIDATE CLIENT (USE JAVASCRIPT) ************* */
+    /* ************** END: VALIDATE CLIENT (USE JAVASCRIPT) ************* */
 
     /* ********************* BEGIN: VALIDATE SERVER (AJAX) *********************** */
 
-    btnSignupEl.addEventListener('click', function () {
-        
+    btnSignupEl.on('click', function () {
         let isUsernameValid = checkUsername(), isEmailValid = checkEmail(), isPasswordValid = checkPassword(), isConfirmPasswordValid = checkConfirmPassword();
         let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
         if (isFormValid) {
